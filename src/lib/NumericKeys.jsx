@@ -6,7 +6,7 @@ const NumericKeys = ({onNumberClick, leftKey, rightKey, backgroundColor}) => {
     var keys = []
     var values = [1,2,3,4,5,6,7,8,9,leftKey,0,rightKey]
     for (var i = 0; i < values.length; i++) {
-        keys.push(<KeyButton text={values[i]} onClick={onNumberClick} backgroundColor={backgroundColor} />)
+        keys.push(<KeyButton key={i} text={values[i]} onClick={onNumberClick} backgroundColor={backgroundColor} />)
     }
 
     var rows = [], size = 3;

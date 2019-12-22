@@ -6,7 +6,7 @@ var NumericOps = ({onOperationClick, backgroundColor}) => {
     var keys = []
     var values = ["+","*","-","/"]
     for (var i = 0; i < values.length; i++) {
-        keys.push(<KeyButton text={values[i]} onClick={onOperationClick} backgroundColor={backgroundColor} />)
+        keys.push(<KeyButton key={i} text={values[i]} onClick={onOperationClick} backgroundColor={backgroundColor} />)
     }
 
     var rows = [], size = 2;
