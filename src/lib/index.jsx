@@ -119,6 +119,7 @@ class NumericInput extends Component {
         delete props.onFocus;
         delete props.onChange;
         delete props.onBlur;
+        delete props.initialValue;
         return props;
     }
 

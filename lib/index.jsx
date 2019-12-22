@@ -8,17 +8,18 @@ class NumericInput extends Component {
         super(props)
         this.state = {
             className: "dnone",
-            inputValue: 0,
+            inputValue: this.props.initialValue,
             displayValue: "0",
         };
         this.inputRef = React.createRef();
     }
 
-    onFocus = () => {
-        parsedValue = this.props.format === 'integer'
+    onFocus = (event) => {
+        var parsedValue = this.props.format === 'integer'
             ? parseInt(event.target.value, 10)
             : parseFloat(event.target.value);
-        this.setState({className: "dflex", displayValue: parsedValue});
+        this.setState({className: "dflex", displayValue: parsedValue.toString()});
+
     }
 
     onComplete = () => {
@@ -138,7 +139,7 @@ class NumericInput extends Component {
                     type="number"
                     name={props.name}
                     onFocus={this.onFocus}
-                    value={this.state.inputValue}
+                    value=25
                     onChange={this.handleChange}
                     onBlur={this.onBlur}
                     {...inputProps}
@@ -164,13 +165,14 @@ class NumericInput extends Component {
 
 NumericInput.propTypes = {
     id: PropTypes.string.isRequired,
+    initialValue: PropTypes.number,
     label: PropTypes.string,
     labelPosition: PropTypes.oneOf(["top", "bottom"]),
     labelClassName: PropTypes.string,
     name: PropTypes.string,
     className: PropTypes.string,
     calculatorBackground: PropTypes.string,
-    calculatorKeyColor: PropTypes.string
+    calculatorKeyColor: PropTypes.string,
     format: PropTypes.oneOf(["integer", "float"])
 
 };
@@ -179,7 +181,8 @@ NumericInput.defaultProps = {
     labelPosition: "top",
     calculatorBackground: "#666",
     calculatorKeyColor: "#ccc",
-    format: "float"
+    format: "float",
+    initialValue: 0
 }
 
 export default NumericInput;
